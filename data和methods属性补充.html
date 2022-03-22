@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./../vue3.js"></script>
+    <script>
+        // data 必须是一个函数
+        // methods中的this指向
+        Vue.createApp = ({
+            template:``,
+            data:function(){
+                
+            }
+        })
+        // 为什么不能使用箭头函数
+        // 1.这this必须有值，并且可以通过this获取到data返回对象中的数据
+        // 2.不可以是window，因为window中我们无法获取到data中的数据
+        // 3.如果使用的箭头函数，那么这个this就会是window
+        // 4.箭头函数是不绑定this的，当需要使用的时候，会向上层作用域寻找
+
+        const obj = function(){
+            console.log(this);
+        }
+        obj()
+        const objj = {bar:obj}
+        objj.bar()
+        console.log(objj);
+    </script>
+</body>
+</html>
